@@ -28,6 +28,30 @@ namespace PracticeOps.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        
         }
-    }
+
+
+        public record WeatherForecast
+        {
+            public DateOnly Date { get; init; }
+            public int TemperatureC { get; init; }
+            public string? Summary { get; init; }
+            public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        }
+
+        [HttpGet("greet/{name}")]
+        public string Greet(string name)
+        {
+            return $"Hello, {name}!";
+        }
+
+        [HttpGet("add/{a}/{b}")]
+        public int Add(int a, int b)
+        {
+            return a + b;
+        }
+
+
+}
 }
